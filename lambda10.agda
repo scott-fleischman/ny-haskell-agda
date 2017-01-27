@@ -5,8 +5,6 @@ data Nat : Set where
   suc  : Nat -> Nat
 
 {-# BUILTIN NATURAL Nat  #-}
-{-# BUILTIN ZERO    zero #-}
-{-# BUILTIN SUC     suc  #-}
 
 _+_ : Nat -> Nat -> Nat
 zero + n = n
@@ -66,6 +64,7 @@ Ctx = Vec Type
 
 data _==_ {A : Set} (x : A) : A -> Set where
   refl : x == x
+infix 1 _==_
 
 data Term {n} (Γ : Ctx n) : Type -> Set where
   var : ∀ {τ} -> (v : Fin n) -> τ == (Γ ! v) -> Term Γ τ

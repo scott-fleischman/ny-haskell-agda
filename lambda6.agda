@@ -5,8 +5,6 @@ data Nat : Set where
   suc  : Nat -> Nat
 
 {-# BUILTIN NATURAL Nat  #-}
-{-# BUILTIN ZERO    zero #-}
-{-# BUILTIN SUC     suc  #-}
 
 _+_ : Nat -> Nat -> Nat
 zero + n = n
@@ -105,3 +103,4 @@ check Γ (lit n) = yes nat (lit n)
 check Γ (t ⊕ u) with check Γ t | check Γ u
 check Γ (.(erase t) ⊕ .(erase u)) | yes nat t | yes nat u = yes nat (t ⊕ u)
 check Γ (t ⊕ u) | _ | _ = no
+
